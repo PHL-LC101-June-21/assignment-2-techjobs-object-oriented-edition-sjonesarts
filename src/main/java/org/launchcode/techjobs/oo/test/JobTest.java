@@ -89,7 +89,7 @@ public class JobTest {
     }
 
     @Test
-    public void testJobFieldsDataForEmpty(){
+    public void testToStringHandlesEmptyField(){
         String idLabel = "ID: "; String nameLabel = "Name: "; String employerLabel = "Employer: "; String locationLabel = "Location: "; String positionTypeLabel = "Position Type: "; String coreCompetencyLabel = "Core Competency: ";
         Job emptyJob3 = new Job("",new Employer(""),new Location("location name"), new PositionType(""), new CoreCompetency(""));
         String noData = "Data not available";
@@ -99,15 +99,11 @@ public class JobTest {
         assertTrue(emptyJob3.getPositionType().getValue().isEmpty() && emptyJob3.toString().contains(positionTypeLabel + noData));
         assertTrue(emptyJob3.getCoreCompetency().getValue().isEmpty() && emptyJob3.toString().contains(coreCompetencyLabel + noData));
     }
-    //4. If a job only contains data for the id field the method returns "OOPS! This job does not seem to exist"
-    @Test
-    public void testForEmptyJob(){
-        Job emptyJob2 = new Job();
-        assertTrue(emptyJob2.toString().equals("OOPS! This job does not seem to exist"));
-    }
+
+
 
     @Test
-    public void testToStringStartsAndEndsWithNL()
+    public void testToStringStartsAndEndsWithNewLine()
 
     {
         Job job = new Job();
@@ -115,4 +111,12 @@ public class JobTest {
         assertEquals( '\n', job.toString().charAt(0) );
         assertEquals( '\n', job.toString().charAt( job.toString().length() - 1) );
     }
+
+    @Test
+    public void testForEmptyJob(){
+        Job emptyJob2 = new Job();
+        assertTrue(emptyJob2.toString().equals("OOPS! This job does not seem to exist"));
+    }
+
+
 }
